@@ -4,6 +4,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -11,20 +12,21 @@ import reactor.core.publisher.Mono;
 
 @Route("index1")
 public class MathView extends VerticalLayout {
-    private TextField number1Field, number2Field, answerField;
+    private NumberField number1Field, number2Field;
+    private TextField answerField;
     private Button addBtn, subBtn, mulBtn, divBtn, modBtn, maxBtn;
     private HorizontalLayout buttonLayout;
     private Paragraph btnLabel;
 
     public MathView() {
-        number1Field = new TextField("Number 1");
-        number2Field = new TextField("Number 2");
+        number1Field = new NumberField("Number 1");
+        number2Field = new NumberField("Number 2");
         answerField = new TextField("Answer");
         addBtn = new Button("+");
         addBtn.getStyle().set("cursor", "pointer");
         addBtn.addClickListener(e -> {
-            double a = Double.parseDouble(number1Field.getValue());
-            double b = Double.parseDouble(number2Field.getValue());
+            double a = number1Field.getValue();
+            double b = number2Field.getValue();
 
             String v = WebClient
                 .create()
@@ -39,8 +41,8 @@ public class MathView extends VerticalLayout {
         subBtn = new Button("-");
         subBtn.getStyle().set("cursor", "pointer");
         subBtn.addClickListener(e -> {
-            double a = Double.parseDouble(number1Field.getValue());
-            double b = Double.parseDouble(number2Field.getValue());
+            double a = number1Field.getValue();
+            double b = number2Field.getValue();
 
             String v = WebClient
                     .create()
@@ -55,8 +57,8 @@ public class MathView extends VerticalLayout {
         mulBtn = new Button("x");
         mulBtn.getStyle().set("cursor", "pointer");
         mulBtn.addClickListener(e -> {
-            double a = Double.parseDouble(number1Field.getValue());
-            double b = Double.parseDouble(number2Field.getValue());
+            double a = number1Field.getValue();
+            double b = number2Field.getValue();
 
             String v = WebClient
                     .create()
@@ -71,8 +73,8 @@ public class MathView extends VerticalLayout {
         divBtn = new Button("/");
         divBtn.getStyle().set("cursor", "pointer");
         divBtn.addClickListener(e -> {
-            double a = Double.parseDouble(number1Field.getValue());
-            double b = Double.parseDouble(number2Field.getValue());
+            double a = number1Field.getValue();
+            double b = number2Field.getValue();
 
             String v = WebClient
                     .create()
@@ -87,8 +89,8 @@ public class MathView extends VerticalLayout {
         modBtn = new Button("mod");
         modBtn.getStyle().set("cursor", "pointer");
         modBtn.addClickListener(e -> {
-            double a = Double.parseDouble(number1Field.getValue());
-            double b = Double.parseDouble(number2Field.getValue());
+            double a = number1Field.getValue();
+            double b = number2Field.getValue();
 
             String v = WebClient
                     .create()
@@ -103,8 +105,8 @@ public class MathView extends VerticalLayout {
         maxBtn = new Button("max");
         maxBtn.getStyle().set("cursor", "pointer");
         maxBtn.addClickListener(e -> {
-            double a = Double.parseDouble(number1Field.getValue());
-            double b = Double.parseDouble(number2Field.getValue());
+            double a = number1Field.getValue();
+            double b = number2Field.getValue();
 
             String v = WebClient
                     .create()
